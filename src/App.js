@@ -1,25 +1,12 @@
-import './App.css';
+import { Routes, Route } from "react-router-dom";
 
-import { useEffect } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getPosts } from './actions/PostActions';
+import { routes } from './routes';
 
 function App() {
-  const posts = useSelector(state => state.postReducer.posts);
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(getPosts())
-  }, [])
-
-  console.log(posts)
-
   return (
-    <div>
-      NAREK
-    </div>
+    <Routes>
+      {routes.map((item, key) => <Route key={key} path={item.path} element={item.element} />)}
+    </Routes>
   );
 }
 
